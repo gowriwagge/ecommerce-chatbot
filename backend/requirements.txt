@@ -1,2 +1,6 @@
-flask==2.3.3
+flask
+flask_sqlalchemy
+openai
+sqlite3  # Built-in, no need to install
+
 

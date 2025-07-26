@@ -1,9 +1,19 @@
 services:
+  frontend:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+
   backend:
     build: ./backend
     ports:
       - "5000:5000"
     volumes:
       - ./backend:/app
+      - ./frontend:/app/frontend 
     working_dir: /app
     command: python main.py
