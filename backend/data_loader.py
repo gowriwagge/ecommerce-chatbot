@@ -1,7 +1,7 @@
 import pandas as pd
 
-orders_df = pd.read_csv("https://raw.githubusercontent.com/recruit41/ecommerce-dataset/main/orders.csv")
-products_df = pd.read_csv("https://raw.githubusercontent.com/recruit41/ecommerce-dataset/main/products.csv")
+orders_df = pd.read_csv("datasets/orders.csv")
+products_df = pd.read_csv("datasets/products.csv")
 
 def get_top_products(limit=5):
     top = orders_df['product_id'].value_counts().head(limit)

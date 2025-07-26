@@ -1,16 +1,11 @@
-from fastapi import FastAPI, Query
-from data_loader import get_top_products, get_order_status, get_stock_count
+from flask import Flask, jsonify
 
-app = FastAPI()
+app = Flask(__name__)
 
-@app.get("/top-products")
-def top_products(limit: int = 5):
-    return get_top_products(limit)
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello from Flask!"})
 
-@app.get("/order-status")
-def order_status(order_id: str = Query(...)):
-    return get_order_status(order_id)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
-@app.get("/stock")
-def stock(product_name: str = Query(...)):
-    return get_stock_count(product_name)
